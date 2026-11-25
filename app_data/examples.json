@@ -1,0 +1,107 @@
+{
+ "v1": {
+  "model": "qwen3.5:4b",
+  "model_key": "qwen",
+  "question_id": "T2-008",
+  "question": "How many claims were later adjusted or reversed?",
+  "group": "T2",
+  "sql": "SELECT COUNT(*) AS adjusted_claims FROM carrier_claims WHERE LINE_PRCSG_IND_CD IN ('R', 'B')",
+  "reason_code": "SCHEMA_UNKNOWN",
+  "verification": {
+   "unknown_tables": [],
+   "unknown_columns": [
+    "LINE_PRCSG_IND_CD"
+   ],
+   "parse_error": null,
+   "exec_error_class": "binder",
+   "exec_error": "BinderException: Binder Error: Referenced column \"LINE_PRCSG_IND_CD\" not found in FROM clause!\nCandidate bindings: \"LINE_PRCSG_IND_CD_1\", \"LINE_PRCSG_IND_CD_2\", \"LINE_PRCSG_IND_CD_3\", \"LINE_PRCSG_IND_CD_4\", \"LINE_PRCSG_IND_CD_5\"\n\nLINE 1: ...LECT COUNT(*) AS adjusted_claims FROM carrier_claims WHERE LINE_PRCSG_IND_CD IN ('R', 'B')\n                                                                      ^^^^^^^^^^^^^^^^^",
+   "agreement": 0.0,
+   "cluster_sizes": [],
+   "k": 5,
+   "greedy_in_majority": false
+  },
+  "result": null,
+  "tau": 0.8
+ },
+ "v2": {
+  "model": "gemma4:e4b",
+  "model_key": "gemma",
+  "question_id": "E-038",
+  "question": "How many doctor claims started in 2009?",
+  "group": "easy",
+  "sql": "SELECT count(*) FROM carrier_claims WHERE CAST(SUBSTR(CLM_FROM_DT, 1, 4) AS INTEGER) = 2009;",
+  "reason_code": "EXEC_ERROR",
+  "verification": {
+   "unknown_tables": [],
+   "unknown_columns": [],
+   "parse_error": null,
+   "exec_error_class": "binder",
+   "exec_error": "BinderException: Binder Error: No function matches the given name and argument types 'substr(BIGINT, INTEGER_LITERAL, INTEGER_LITERAL)'. You might need to add explicit type casts.\n\tCandidate functions:\n\tsubstr(string VARCHAR, \"start\" BIGINT, length BIGINT) -> VARCHAR\n\tsubstr(string VARCHAR, \"start\" BIGINT) -> VARCHAR\n\n\nLINE 1: SELECT count(*) FROM carrier_claims WHERE CAST(SUBSTR(CLM_FROM_DT, 1, 4) AS INTEGER) = 2009;\n                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^",
+   "agreement": 0.0,
+   "cluster_sizes": [],
+   "k": 5,
+   "greedy_in_majority": false
+  },
+  "result": null,
+  "tau": 0.6
+ },
+ "walkthrough": {
+  "model": "qwen3.5:4b",
+  "model_key": "qwen",
+  "question_id": "H-022",
+  "question": "How many members had three or more of the 11 chronic conditions in 2010?",
+  "group": "hard",
+  "sql": "SELECT COUNT(*) AS member_count FROM beneficiary WHERE year = 2010 AND (SP_ALZHDMTA + SP_CHF + SP_CHRNKIDN + SP_CNCR + SP_COPD + SP_DEPRESSN + SP_DIABETES + SP_ISCHMCHT + SP_OSTEOPRS + SP_RA_OA + SP_STRKETIA) >= 3;",
+  "reason_code": "LOW_AGREEMENT",
+  "verification": {
+   "unknown_tables": [],
+   "unknown_columns": [],
+   "parse_error": null,
+   "exec_error_class": null,
+   "exec_error": null,
+   "agreement": 0.4,
+   "cluster_sizes": [
+    2,
+    1,
+    1
+   ],
+   "k": 5,
+   "greedy_in_majority": true
+  },
+  "result": null,
+  "tau": 0.8,
+  "c0": {
+   "answered": true,
+   "correct": false,
+   "result": {
+    "columns": [
+     "member_count"
+    ],
+    "rows": [
+     [
+      112754
+     ]
+    ],
+    "more_rows": false,
+    "error": null
+   }
+  },
+  "gold_result": {
+   "columns": [
+    "count_star()"
+   ],
+   "rows": [
+    [
+     35857
+    ]
+   ],
+   "more_rows": false,
+   "error": null
+  },
+  "owner_note": "Flags are 1 = yes, 2 = no, so summing raw flags is wrong.",
+  "trap_tags": [
+   "coded_flag",
+   "multi_year_beneficiary"
+  ]
+ }
+}

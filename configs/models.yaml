@@ -1,0 +1,48 @@
+# The ONLY place model names live. Code refers to models by `key`.
+# provider: ollama (local or Kaggle) | groq (OpenAI-compatible API)
+#
+# use: benchmark = part of the full benchmark runs (the default set for
+#                  run_benchmark.py); these run on a Kaggle GPU through Ollama
+#      demo      = only for the live demo and small tests (Groq's free tier
+#                  allows too few calls per day for the benchmark)
+#
+# options are the per-model settings ("Model settings" in the spec). They are
+# part of the cache key, so changing one never reuses old answers.
+#   think             (ollama) false = no reasoning phase before the answer.
+#                     gpt-oss cannot switch reasoning off; it takes low/medium/high.
+#   num_ctx           (ollama) context window in tokens; the schema prompt is ~2,800
+#   reasoning_effort  (groq)   how much hidden reasoning the model may do
+#   max_tokens        cap on generated tokens per call (includes reasoning tokens)
+#
+# info is only for the report's model table (table6_1_models.csv). It is not
+# sent to the model and is not part of the cache key. parameters, quantization
+# and size_gb are from the Ollama registry entry of each tag. hardware is from
+# step 4 of each full Kaggle run: GPU memory used as measured by nvidia-smi after
+# loading the model with num_ctx 8192 (ollama ps under-reports some models).
+models:
+  - key: qwen
+    provider: ollama
+    model: "qwen3.5:4b"
+    use: benchmark
+    options: {think: false, num_ctx: 8192, max_tokens: 600}
+    info: {maker: Alibaba, parameters: 4.2B, quantization: Q4_K_M, size_gb: 3.3,
+           hardware: "Kaggle 2x Tesla T4; 1 GPU used (GPU 0: 3985 MiB); 100% on GPU"}
+  - key: gemma
+    provider: ollama
+    model: "gemma4:e4b"
+    use: benchmark
+    options: {think: false, num_ctx: 8192, max_tokens: 600}
+    info: {maker: Google, parameters: 7.5B, quantization: Q4_K_M, size_gb: 6.6,
+           hardware: "Kaggle 2x Tesla T4; 1 GPU used (GPU 0: 4995 MiB); 100% on GPU"}
+  - key: mid_oss            # mid-size model; too large for the laptop, runs on Kaggle
+    provider: ollama
+    model: "gpt-oss:20b"
+    use: benchmark
+    options: {think: low, num_ctx: 8192, max_tokens: 1500}
+    info: {maker: OpenAI, parameters: 20.9B, quantization: MXFP4, size_gb: 13.8,
+           hardware: "Kaggle 2x Tesla T4; split across both (GPU 0: 6609 MiB, GPU 1: 6699 MiB); 100% on GPU"}
+  - key: groq
+    provider: groq
+    model: "openai/gpt-oss-20b"
+    use: demo
+    options: {reasoning_effort: low, max_tokens: 1500}

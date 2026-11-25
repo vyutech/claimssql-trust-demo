@@ -1,0 +1,411 @@
+{
+ "n_test": 160,
+ "models": [
+  {
+   "model_key": "qwen",
+   "model": "qwen3.5:4b",
+   "tau": 0.8,
+   "harmful_c0": 75.0,
+   "harmful_c4": 4.0,
+   "harmful_c4_lo": 1.0,
+   "harmful_c4_hi": 8.0,
+   "rs10_c0": -420.0,
+   "rs10_c4": 25.0,
+   "coverage_c4": 0.1375,
+   "ex_c0": 0.3333,
+   "ex_c4": 0.1875
+  },
+  {
+   "model_key": "gemma",
+   "model": "gemma4:e4b",
+   "tau": 0.6,
+   "harmful_c0": 72.0,
+   "harmful_c4": 23.0,
+   "harmful_c4_lo": 15.0,
+   "harmful_c4_hi": 31.0,
+   "rs10_c0": -398.75,
+   "rs10_c4": -89.375,
+   "coverage_c4": 0.3187,
+   "ex_c0": 0.3125,
+   "ex_c4": 0.2917
+  },
+  {
+   "model_key": "mid_oss",
+   "model": "gpt-oss:20b",
+   "tau": 1.0,
+   "harmful_c0": 79.0,
+   "harmful_c4": 4.0,
+   "harmful_c4_lo": 1.0,
+   "harmful_c4_hi": 8.0,
+   "rs10_c0": -443.125,
+   "rs10_c4": 36.875,
+   "coverage_c4": 0.2437,
+   "ex_c0": 0.5104,
+   "ex_c4": 0.3646
+  }
+ ],
+ "harmful": [
+  {
+   "model": "qwen",
+   "config": "C0",
+   "harmful": 75.0,
+   "lo": 65.0,
+   "hi": 85.0
+  },
+  {
+   "model": "qwen",
+   "config": "C1",
+   "harmful": 57.0,
+   "lo": 46.0,
+   "hi": 68.0
+  },
+  {
+   "model": "qwen",
+   "config": "C2",
+   "harmful": 47.0,
+   "lo": 37.0,
+   "hi": 57.0
+  },
+  {
+   "model": "qwen",
+   "config": "C3",
+   "harmful": 29.0,
+   "lo": 20.0,
+   "hi": 39.0
+  },
+  {
+   "model": "qwen",
+   "config": "C4",
+   "harmful": 4.0,
+   "lo": 1.0,
+   "hi": 8.0
+  },
+  {
+   "model": "gemma",
+   "config": "C0",
+   "harmful": 72.0,
+   "lo": 62.0,
+   "hi": 82.0
+  },
+  {
+   "model": "gemma",
+   "config": "C1",
+   "harmful": 61.0,
+   "lo": 51.0,
+   "hi": 70.0
+  },
+  {
+   "model": "gemma",
+   "config": "C2",
+   "harmful": 56.0,
+   "lo": 46.0,
+   "hi": 66.0
+  },
+  {
+   "model": "gemma",
+   "config": "C3",
+   "harmful": 36.0,
+   "lo": 27.0,
+   "hi": 46.0
+  },
+  {
+   "model": "gemma",
+   "config": "C4",
+   "harmful": 23.0,
+   "lo": 15.0,
+   "hi": 31.0
+  },
+  {
+   "model": "mid_oss",
+   "config": "C0",
+   "harmful": 79.0,
+   "lo": 69.0,
+   "hi": 88.0
+  },
+  {
+   "model": "mid_oss",
+   "config": "C1",
+   "harmful": 64.0,
+   "lo": 54.0,
+   "hi": 74.0
+  },
+  {
+   "model": "mid_oss",
+   "config": "C2",
+   "harmful": 53.0,
+   "lo": 43.0,
+   "hi": 63.0
+  },
+  {
+   "model": "mid_oss",
+   "config": "C3",
+   "harmful": 49.0,
+   "lo": 39.0,
+   "hi": 59.0
+  },
+  {
+   "model": "mid_oss",
+   "config": "C4",
+   "harmful": 4.0,
+   "lo": 1.0,
+   "hi": 8.0
+  }
+ ],
+ "infeasible": [
+  {
+   "model": "qwen",
+   "group": "T1",
+   "n": 20,
+   "answered_c0": 1,
+   "answered_c4": 0
+  },
+  {
+   "model": "qwen",
+   "group": "T2",
+   "n": 12,
+   "answered_c0": 1,
+   "answered_c4": 0
+  },
+  {
+   "model": "qwen",
+   "group": "T3",
+   "n": 20,
+   "answered_c0": 15,
+   "answered_c4": 2
+  },
+  {
+   "model": "qwen",
+   "group": "T4",
+   "n": 12,
+   "answered_c0": 1,
+   "answered_c4": 0
+  },
+  {
+   "model": "gemma",
+   "group": "T1",
+   "n": 20,
+   "answered_c0": 1,
+   "answered_c4": 1
+  },
+  {
+   "model": "gemma",
+   "group": "T2",
+   "n": 12,
+   "answered_c0": 3,
+   "answered_c4": 0
+  },
+  {
+   "model": "gemma",
+   "group": "T3",
+   "n": 20,
+   "answered_c0": 8,
+   "answered_c4": 4
+  },
+  {
+   "model": "gemma",
+   "group": "T4",
+   "n": 12,
+   "answered_c0": 0,
+   "answered_c4": 0
+  },
+  {
+   "model": "mid_oss",
+   "group": "T1",
+   "n": 20,
+   "answered_c0": 0,
+   "answered_c4": 0
+  },
+  {
+   "model": "mid_oss",
+   "group": "T2",
+   "n": 12,
+   "answered_c0": 6,
+   "answered_c4": 0
+  },
+  {
+   "model": "mid_oss",
+   "group": "T3",
+   "n": 20,
+   "answered_c0": 20,
+   "answered_c4": 0
+  },
+  {
+   "model": "mid_oss",
+   "group": "T4",
+   "n": 12,
+   "answered_c0": 6,
+   "answered_c4": 0
+  }
+ ],
+ "auroc": [
+  {
+   "model": "qwen",
+   "signal": "1 - agreement",
+   "auroc": 0.8841,
+   "lo": 0.8085,
+   "hi": 0.9455
+  },
+  {
+   "model": "qwen",
+   "signal": "100 - confidence",
+   "auroc": 0.7927,
+   "lo": 0.7115,
+   "hi": 0.8627
+  },
+  {
+   "model": "qwen",
+   "signal": "sql length",
+   "auroc": 0.8402,
+   "lo": 0.7502,
+   "hi": 0.9209
+  },
+  {
+   "model": "gemma",
+   "signal": "1 - agreement",
+   "auroc": 0.8563,
+   "lo": 0.7901,
+   "hi": 0.9172
+  },
+  {
+   "model": "gemma",
+   "signal": "100 - confidence",
+   "auroc": 0.9,
+   "lo": 0.8416,
+   "hi": 0.948
+  },
+  {
+   "model": "gemma",
+   "signal": "sql length",
+   "auroc": 0.7973,
+   "lo": 0.7006,
+   "hi": 0.8895
+  },
+  {
+   "model": "mid_oss",
+   "signal": "1 - agreement",
+   "auroc": 0.8885,
+   "lo": 0.8263,
+   "hi": 0.9447
+  },
+  {
+   "model": "mid_oss",
+   "signal": "100 - confidence",
+   "auroc": 0.8568,
+   "lo": 0.7917,
+   "hi": 0.9169
+  },
+  {
+   "model": "mid_oss",
+   "signal": "sql length",
+   "auroc": 0.7484,
+   "lo": 0.6603,
+   "hi": 0.8316
+  }
+ ],
+ "differences": [
+  {
+   "comparison": "qwen C4 minus qwen C0",
+   "metric": "rs_10",
+   "difference": 445.0,
+   "lo": 379.38,
+   "hi": 508.75,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "qwen C4 minus qwen C0",
+   "metric": "harmful",
+   "difference": -71.0,
+   "lo": -81.0,
+   "hi": -61.0,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "gemma C4 minus gemma C0",
+   "metric": "rs_10",
+   "difference": 309.38,
+   "lo": 245.0,
+   "hi": 368.14,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "gemma C4 minus gemma C0",
+   "metric": "harmful",
+   "difference": -49.0,
+   "lo": -58.0,
+   "hi": -39.0,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "mid_oss C4 minus mid_oss C0",
+   "metric": "rs_10",
+   "difference": 480.0,
+   "lo": 418.12,
+   "hi": 542.5,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "mid_oss C4 minus mid_oss C0",
+   "metric": "harmful",
+   "difference": -75.0,
+   "lo": -84.0,
+   "hi": -66.0,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "qwen C4 minus mid_oss C0",
+   "metric": "rs_10",
+   "difference": 468.12,
+   "lo": 399.38,
+   "hi": 533.75,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "gemma C4 minus mid_oss C0",
+   "metric": "rs_10",
+   "difference": 353.75,
+   "lo": 275.61,
+   "hi": 431.25,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "mid_oss C4 minus qwen C4",
+   "metric": "rs_10",
+   "difference": 11.88,
+   "lo": -24.38,
+   "hi": 49.38,
+   "excludes_zero": false
+  },
+  {
+   "comparison": "mid_oss C4 minus gemma C4",
+   "metric": "rs_10",
+   "difference": 126.25,
+   "lo": 71.88,
+   "hi": 179.38,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "qwen AUROC(1 - agreement) minus qwen AUROC(100 - confidence)",
+   "metric": "auroc",
+   "difference": 0.0914,
+   "lo": 0.0161,
+   "hi": 0.168,
+   "excludes_zero": true
+  },
+  {
+   "comparison": "gemma AUROC(1 - agreement) minus gemma AUROC(100 - confidence)",
+   "metric": "auroc",
+   "difference": -0.0437,
+   "lo": -0.1145,
+   "hi": 0.0222,
+   "excludes_zero": false
+  },
+  {
+   "comparison": "mid_oss AUROC(1 - agreement) minus mid_oss AUROC(100 - confidence)",
+   "metric": "auroc",
+   "difference": 0.0318,
+   "lo": -0.0295,
+   "hi": 0.0992,
+   "excludes_zero": false
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+# Experiment settings shared by generation, verification, policy and scoring.
+generation:
+  greedy_temperature: 0.0
+  greedy_seed: 0
+  k_samples: 5                  # sampled calls for V3 self-consistency
+  sample_temperature: 0.7
+  sample_seeds: [1, 2, 3, 4, 5] # one seed per sample; must have k_samples entries
+  max_parse_retries: 1          # malformed JSON -> one retry, then PARSE_ERROR
+
+verify:
+  dry_run_timeout_s: 30
+  result_row_cap: 10000         # results above this are truncated and flagged
+  float_round_dp: 4
+
+policy:
+  tau: null                     # agreement threshold for C4; tuned on the dev split in P6
+
+benchmark:
+  split_seed: 42                # fixed once; never change after splits are assigned
+  dev_fraction: 0.2
+  composition:                  # target number of questions per group (200 in total)
+    easy: 40
+    medium: 40
+    hard: 40
+    T1: 25                      # missing concept
+    T2: 15                      # not in data
+    T3: 25                      # ambiguous
+    T4: 15                      # not a SQL question
+
+metrics:
+  rs_penalties: [0, 1, 10]      # c values for the Reliability Score
+  bootstrap_resamples: 2000     # resamples of the test questions for confidence intervals
+  bootstrap_seed: 20261117      # fixed, so the intervals are the same on every run

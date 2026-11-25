@@ -1,0 +1,682 @@
+# Schema catalogue for ClaimsSQL-Trust.
+#
+# Drafted by scripts/make_catalogue.py. Descriptions and code meanings are taken
+# from the CMS Linkable 2008-2010 Medicare DE-SynPUF Codebook
+# (https://www.cms.gov/files/document/de-10-codebook.pdf-0).
+# Reviewed by the project owner, who also writes the `notes` fields.
+#
+# An entry named PREFIX_1..N stands for the columns PREFIX_1 ... PREFIX_N.
+# include: false keeps a column out of the prompt.
+
+source:
+  title: CMS Linkable 2008-2010 Medicare DE-SynPUF Codebook
+  url: https://www.cms.gov/files/document/de-10-codebook.pdf-0
+tables:
+- name: beneficiary
+  grain: one row per beneficiary per year
+  description: 'CMS Beneficiary Summary DE-SynPUF: each record pertains to a synthetic Medicare beneficiary. The
+    2008, 2009 and 2010 yearly files are stacked; the year column says which file a row came from.'
+  columns:
+  - name: DESYNPUF_ID
+    type: VARCHAR
+    description: Beneficiary Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_BIRTH_DT
+    type: BIGINT
+    description: Date of birth
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_DEATH_DT
+    type: BIGINT
+    description: Date of death
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_SEX_IDENT_CD
+    type: VARCHAR
+    description: Sex
+    include: true
+    codes:
+      '1': Male
+      '2': Female
+    notes: ''
+  - name: BENE_RACE_CD
+    type: VARCHAR
+    description: Beneficiary Race Code
+    include: true
+    codes:
+      '1': White
+      '2': Black
+      '3': Others
+      '5': Hispanic
+    notes: ''
+  - name: BENE_ESRD_IND
+    type: VARCHAR
+    description: End stage renal disease Indicator
+    include: true
+    codes:
+      '0': The beneficiary does not have esrd
+      Y: The beneficiary has esrd
+    notes: ''
+  - name: SP_STATE_CODE
+    type: VARCHAR
+    description: State Code
+    include: true
+    codes:
+      '01': AL
+      '02': AK
+      '03': AZ
+      '04': AR
+      '05': CA
+      '06': CO
+      '07': CT
+      08: DE
+      09: DC
+      '10': FL
+      '11': GA
+      '12': HI
+      '13': ID
+      '14': IL
+      '15': IN
+      '16': IA
+      '17': KS
+      '18': KY
+      '19': LA
+      '20': ME
+      '21': MD
+      '22': MA
+      '23': MI
+      '24': MN
+      '25': MS
+      '26': MO
+      '27': MT
+      '28': NE
+      '29': NV
+      '30': NH
+      '31': NJ
+      '32': NM
+      '33': NY
+      '34': NC
+      '35': ND
+      '36': OH
+      '37': OK
+      '38': OR
+      '39': PA
+      '41': RI
+      '42': SC
+      '43': SD
+      '44': TN
+      '45': TX
+      '46': UT
+      '47': VT
+      '49': VA
+      '50': WA
+      '51': WV
+      '52': WI
+      '53': WY
+      '54': Others
+    notes: ''
+  - name: BENE_COUNTY_CD
+    type: VARCHAR
+    description: County Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_HI_CVRAGE_TOT_MONS
+    type: BIGINT
+    description: Total number of months of part A coverage for the beneficiary
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_SMI_CVRAGE_TOT_MONS
+    type: BIGINT
+    description: Total number of months of part B coverage for the beneficiary
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENE_HMO_CVRAGE_TOT_MONS
+    type: BIGINT
+    description: Total number of months of HMO coverage for the beneficiary
+    include: true
+    codes: {}
+    notes: ''
+  - name: PLAN_CVRG_MOS_NUM
+    type: INTEGER
+    description: Total number of months of part D plan coverage for the beneficiary
+    include: true
+    codes: {}
+    notes: ''
+  - name: SP_ALZHDMTA
+    type: BIGINT
+    description: 'Chronic Condition: Alzheimer or related disorders or senile'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_CHF
+    type: BIGINT
+    description: 'Chronic Condition: Heart Failure'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_CHRNKIDN
+    type: BIGINT
+    description: 'Chronic Condition: Chronic Kidney Disease'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_CNCR
+    type: BIGINT
+    description: 'Chronic Condition: Cancer'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_COPD
+    type: BIGINT
+    description: 'Chronic Condition: Chronic Obstructive Pulmonary Disease'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_DEPRESSN
+    type: BIGINT
+    description: 'Chronic Condition: Depression'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_DIABETES
+    type: BIGINT
+    description: 'Chronic Condition: Diabetes'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_ISCHMCHT
+    type: BIGINT
+    description: 'Chronic Condition: Ischemic Heart Disease'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_OSTEOPRS
+    type: BIGINT
+    description: 'Chronic Condition: Osteoporosis'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_RA_OA
+    type: BIGINT
+    description: 'Chronic Condition: Rheumatoid Arthritis or Osteoarthritis (RA/OA)'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: SP_STRKETIA
+    type: BIGINT
+    description: 'Chronic Condition: Stroke/transient Ischemic Attack'
+    include: true
+    codes:
+      '1': 'Yes'
+      '2': 'No'
+    notes: ''
+  - name: MEDREIMB_IP
+    type: DOUBLE
+    description: Inpatient annual Medicare reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENRES_IP
+    type: DOUBLE
+    description: Inpatient annual beneficiary responsibility amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: PPPYMT_IP
+    type: DOUBLE
+    description: Inpatient annual primary payer reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: MEDREIMB_OP
+    type: DOUBLE
+    description: Outpatient annual Medicare reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENRES_OP
+    type: DOUBLE
+    description: Outpatient annual beneficiary responsibility amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: PPPYMT_OP
+    type: DOUBLE
+    description: Outpatient annual primary payer reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: MEDREIMB_CAR
+    type: DOUBLE
+    description: Carrier annual Medicare reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: BENRES_CAR
+    type: DOUBLE
+    description: Carrier annual beneficiary responsibility amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: PPPYMT_CAR
+    type: DOUBLE
+    description: Carrier annual primary payer reimbursement amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: year
+    type: INTEGER
+    description: ''
+    include: true
+    codes: {}
+    notes: ''
+- name: inpatient_claims
+  grain: one row per claim segment
+  description: 'CMS Inpatient Claims DE-SynPUF: each record pertains to a synthetic inpatient claim.'
+  columns:
+  - name: DESYNPUF_ID
+    type: VARCHAR
+    description: Beneficiary Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_ID
+    type: VARCHAR
+    description: Claim ID
+    include: true
+    codes: {}
+    notes: ''
+  - name: SEGMENT
+    type: BIGINT
+    description: Claim Line Segment – Up to 2 (One Segment per 45 Revenue Lines)
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_FROM_DT
+    type: BIGINT
+    description: Claims start date
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_THRU_DT
+    type: BIGINT
+    description: CLAIMS END DATE
+    include: true
+    codes: {}
+    notes: ''
+  - name: PRVDR_NUM
+    type: VARCHAR
+    description: Provider Institution
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_PMT_AMT
+    type: DOUBLE
+    description: Claim Payment Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_PRMRY_PYR_CLM_PD_AMT
+    type: DOUBLE
+    description: NCH Primary Payer Claim Paid Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: AT_PHYSN_NPI
+    type: VARCHAR
+    description: Attending Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: OP_PHYSN_NPI
+    type: VARCHAR
+    description: Operating Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: OT_PHYSN_NPI
+    type: VARCHAR
+    description: Other Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_ADMSN_DT
+    type: BIGINT
+    description: Inpatient admission date
+    include: true
+    codes: {}
+    notes: ''
+  - name: ADMTNG_ICD9_DGNS_CD
+    type: VARCHAR
+    description: Claim Admitting Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_PASS_THRU_PER_DIEM_AMT
+    type: DOUBLE
+    description: Claim Pass Thru Per Diem Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_IP_DDCTBL_AMT
+    type: DOUBLE
+    description: NCH Beneficiary Inpatient Deductible Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_PTA_COINSRNC_LBLTY_AM
+    type: DOUBLE
+    description: NCH Beneficiary Part A Coinsurance Liability Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_BLOOD_DDCTBL_LBLTY_AM
+    type: DOUBLE
+    description: NCH Beneficiary Blood Deductible Liability Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_UTLZTN_DAY_CNT
+    type: BIGINT
+    description: Claim Utilization Day Count
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_DSCHRG_DT
+    type: BIGINT
+    description: Inpatient discharged date
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_DRG_CD
+    type: VARCHAR
+    description: Claim Diagnosis Related Group Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_DGNS_CD_1..10
+    type: VARCHAR
+    description: Claim Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_PRCDR_CD_1..5
+    type: VARCHAR
+    description: Claim Procedure Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_PRCDR_CD_6
+    type: VARCHAR
+    description: Claim Procedure Code
+    include: false
+    codes: {}
+    notes: ''
+  - name: HCPCS_CD_1..45
+    type: VARCHAR
+    description: Revenue Center HCFA Common Procedure Coding System
+    include: false
+    codes: {}
+    notes: ''
+- name: outpatient_claims
+  grain: one row per claim segment
+  description: 'CMS Outpatient Claims DE-SynPUF: each record pertains to a synthetic outpatient claim.'
+  columns:
+  - name: DESYNPUF_ID
+    type: VARCHAR
+    description: Beneficiary Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_ID
+    type: VARCHAR
+    description: Claim ID
+    include: true
+    codes: {}
+    notes: ''
+  - name: SEGMENT
+    type: BIGINT
+    description: Claim Line Segment – Up to 2 (One Segment per 45 Revenue Lines)
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_FROM_DT
+    type: BIGINT
+    description: Claims start date
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_THRU_DT
+    type: BIGINT
+    description: Claims end date
+    include: true
+    codes: {}
+    notes: ''
+  - name: PRVDR_NUM
+    type: VARCHAR
+    description: Provider Institution
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_PMT_AMT
+    type: DOUBLE
+    description: Claim Payment Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_PRMRY_PYR_CLM_PD_AMT
+    type: DOUBLE
+    description: NCH Primary Payer Claim Paid Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: AT_PHYSN_NPI
+    type: VARCHAR
+    description: Attending Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: OP_PHYSN_NPI
+    type: VARCHAR
+    description: Operating Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: OT_PHYSN_NPI
+    type: VARCHAR
+    description: Other Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_BLOOD_DDCTBL_LBLTY_AM
+    type: DOUBLE
+    description: NCH Beneficiary Blood Deductible Liability Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_DGNS_CD_1..10
+    type: VARCHAR
+    description: Claim Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_PRCDR_CD_1..6
+    type: VARCHAR
+    description: Claim Procedure Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_PTB_DDCTBL_AMT
+    type: DOUBLE
+    description: NCH Beneficiary Part B Deductible Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: NCH_BENE_PTB_COINSRNC_AMT
+    type: DOUBLE
+    description: NCH Beneficiary Part B Coinsurance Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: ADMTNG_ICD9_DGNS_CD
+    type: VARCHAR
+    description: Claim Admitting Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: HCPCS_CD_1..44
+    type: VARCHAR
+    description: Revenue Center HCFA Common Procedure Coding System
+    include: true
+    codes: {}
+    notes: ''
+  - name: HCPCS_CD_45
+    type: VARCHAR
+    description: Revenue Center HCFA Common Procedure Coding System
+    include: false
+    codes: {}
+    notes: ''
+- name: carrier_claims
+  grain: one row per claim
+  description: 'CMS Carrier Claims DE-SynPUF: each record pertains to a synthetic physician/supplier claim.'
+  columns:
+  - name: DESYNPUF_ID
+    type: VARCHAR
+    description: Beneficiary Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_ID
+    type: VARCHAR
+    description: Claim ID
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_FROM_DT
+    type: BIGINT
+    description: Claims start date
+    include: true
+    codes: {}
+    notes: ''
+  - name: CLM_THRU_DT
+    type: BIGINT
+    description: Claims end date
+    include: true
+    codes: {}
+    notes: ''
+  - name: ICD9_DGNS_CD_1..8
+    type: VARCHAR
+    description: Claim Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
+  - name: PRF_PHYSN_NPI_1..13
+    type: VARCHAR
+    description: Provider Physician – National Provider Identifier Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: TAX_NUM_1..13
+    type: VARCHAR
+    description: Provider Institution Tax Number
+    include: true
+    codes: {}
+    notes: ''
+  - name: HCPCS_CD_1..13
+    type: VARCHAR
+    description: Line HCFA Common Procedure Coding System
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_NCH_PMT_AMT_1..13
+    type: DOUBLE
+    description: Line NCH Payment Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_BENE_PTB_DDCTBL_AMT_1..13
+    type: DOUBLE
+    description: Line Beneficiary Part B Deductible Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_BENE_PRMRY_PYR_PD_AMT_1..13
+    type: DOUBLE
+    description: Line Beneficiary Primary Payer Paid Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_COINSRNC_AMT_1..13
+    type: DOUBLE
+    description: Line Coinsurance Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_ALOWD_CHRG_AMT_1..13
+    type: DOUBLE
+    description: Line Allowed Charge Amount
+    include: true
+    codes: {}
+    notes: ''
+  - name: LINE_PRCSG_IND_CD_1..13
+    type: VARCHAR
+    description: Line Processing Indicator Code
+    include: true
+    codes:
+      A: Allowed
+      B: Benefits exhausted
+      C: Noncovered care
+      L: CLIA (eff 9/92)
+      M: Multiple submittal––duplicate line item
+      N: Medically unnecessary
+      O: Other
+      P: Physician ownership denial (eff 3/92)
+      Q: 'MSP cost avoided (contractor #88888) –  voluntary agreement (eff. 1/98)'
+      R: Reprocessed––adjustments based on subsequent reprocessing of claim
+      S: Secondary payer
+      T: MSP cost avoided – IEQ contractor (eff. 7/76)
+      U: MSP cost avoided – HMO rate cell adjustment (eff. 7/96)
+      V: MSP cost avoided – litigation settlement (eff. 7/96)
+      X: MSP cost avoided – generic
+      Y: MSP cost avoided – IRS/SSA data match project
+      Z: Bundled test, no payment  (eff. 1/1/98)
+      '!': MSP cost avoided – COB Contractor ('00' 2–byte code)
+      '@': MSP cost avoided – BC/BS Voluntary Agreements ('12' 2–byte code)
+      $: MSP cost avoided – Workman's Compensation (WC) Data match ('14' 2–byte code)
+      <: MSP cost avoided – MIR Group Health Plan ('21' 2–byte code) (eff. 1/2009)
+      '>': MSP cost avoided – MIR non–Group Health Plan ('22' 2–byte code) (eff. 1/2009)
+      '&': MSP cost avoided – Recovery Audit Contractor – Florida ('26' 2–byte code) (eff. 10/2005)
+    notes: ''
+  - name: LINE_ICD9_DGNS_CD_1..13
+    type: VARCHAR
+    description: Line Diagnosis Code
+    include: true
+    codes: {}
+    notes: ''
